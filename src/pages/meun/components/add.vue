@@ -15,8 +15,8 @@
         </el-form-item>
 
         <el-form-item label="菜单类型">
-          <el-radio v-model="form.type" :label="1">目录</el-radio>
-          <el-radio v-model="form.type" :label="2">菜单</el-radio>
+          <el-radio v-model="form.type" :label="1" >目录</el-radio>
+          <el-radio v-model="form.type" :label="2" >菜单</el-radio>
         </el-form-item>
 
         <el-form-item label="目录图标" v-if="form.type==1">
@@ -63,7 +63,7 @@ export default {
     return {
       value: true,
       url: [
-        "/meun",
+        "/menu",
         "/role",
         "/manage",
         "/cate",

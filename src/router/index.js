@@ -26,11 +26,11 @@ const router= new Router({
           name:''
         },
         {
-          path:'meun',
-          component: ()=>import('../pages/meun/meun'),
+          path:'menu',
+          component: ()=>import('../pages/meun/menu'),
           name:'菜单管理',
           beforeEnter(to,from,next){
-            root('/meun')?next():next('/home')
+            root('/menu')?next():next('/home')
           }
         }, 
         {

@@ -2,8 +2,12 @@ import axios from 'axios'
 import store from '../store/index'
 import router from '../router'
 import {warning} from '../util/alert'
+
+
 const head = '/api'
 // const head = ''
+
+
 //请求拦截
 axios.interceptors.request.use(req=>{
     if(req.url!=head+'/api/userlogin'){
@@ -522,4 +526,13 @@ export const httpseckdelete=(id)=>{
     })
 }
 
- 
+  
+//=====================================前台模块相关接口=================================================
+//获取分类信息(首页)
+
+export const httpgetcate=()=>{
+    return axios({
+        url:head+'/api/getcate',
+        method:'get'
+    })
+}
