@@ -100,10 +100,13 @@ export default {
     getone(id) {
       httpbannerinfo(id).then((res) => {
         this.form = res.data.list;
+        this.form.id = id
         this.imageUrl = this.$img + this.form.img;
+        console.log(this.form)
       });
     },
     edit() {
+      
       httpbanneredit(this.form).then((res) => {
         if (res.data.code == 200) {
           success(res.data.msg);

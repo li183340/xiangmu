@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <el-dialog :title="add.title" :visible.sync="add.show" @opened="wangeditor" @closed='closed'>
+    <el-dialog :title="add.title" :visible.sync="add.show" @opened="wangeditor" @closed="closed">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="一级分类">
           <el-select v-model="form.first_cateid" placeholder="请选择" @change="cates">
@@ -26,7 +26,7 @@
         </el-form-item>
 
         <el-form-item label="商品名称">
-          <el-input v-model="form.goodsname" ></el-input>
+          <el-input v-model="form.goodsname"></el-input>
         </el-form-item>
         <el-form-item label="价格">
           <el-input v-model="form.price" @blur="regprice"></el-input>
@@ -152,6 +152,8 @@ export default {
       };
     },
     add1() {
+      this.form.specsattr = JSON.stringify(this.form.specsattr);
+      this.form.description = this.editor.txt.html();
       if (
         this.form.goodsname &&
         this.form.price &&
@@ -159,8 +161,6 @@ export default {
         this.form.description &&
         this.form.specsattr
       ) {
-        this.form.specsattr = JSON.stringify(this.form.specsattr);
-        this.form.description = this.editor.txt.html();
         httpgoodsadd(this.form).then((res) => {
           console.log(this.form, "777777777");
           if (res.data.code == 200) {
@@ -170,8 +170,8 @@ export default {
             this.requesttotal();
           }
         });
-      }else{
-        warning('请输入内容')
+      } else {
+        warning("请输入内容");
       }
     },
     pic(a) {
@@ -220,20 +220,20 @@ export default {
       this.editor.txt.clear();
     },
 
-    regprice(){
-      if(!numberreg().test(this.form.price)){
-          warning('请输入数字')
+    regprice() {
+      if (!numberreg().test(this.form.price)) {
+        warning("请输入数字");
       }
     },
 
-    regmarket_price(){
-     if(!numberreg().test(this.form.market_price)){
-          warning('请输入数字')
+    regmarket_price() {
+      if (!numberreg().test(this.form.market_price)) {
+        warning("请输入数字");
       }
     },
-    closed(){
-      this.clear()
-    }
+    closed() {
+      this.clear();
+    },
   },
   computed: {
     ...mapGetters({

@@ -68,7 +68,7 @@ export default {
     clear() {
       this.form = {
         specsname: "",
-        attrs: [],
+        attrs: '',
         status: 1,
       };
     },
@@ -110,9 +110,10 @@ export default {
     edit() {
       this.form.attrs = JSON.stringify(this.form.attrs);
       httpspecsedit(this.form).then((res) => {
-        if (res.data.msg) {
-          success(res, data.msg);
+        if (res.data.code==200) {
+          success(res.data.msg);
           this.add.show = false;
+          this.requestlist()
           this.clear();
         } else {
           warning(res.data.msg);

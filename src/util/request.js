@@ -244,7 +244,7 @@ export const httpcateedit = (params)=>{
     }
     return axios({
         url:head+'/api/cateedit',
-        method:'psot',
+        method:'post',
         data:form
 
     })

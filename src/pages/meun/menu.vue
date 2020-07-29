@@ -27,7 +27,7 @@ export default {
     edit(id) {
       this.add.show = true;
       this.$refs.child.getDetail(id);
-      this.add.show = true;
+      this.add.isAdd = false;
       this.add.title = "菜单编辑";
     },
     adds() {

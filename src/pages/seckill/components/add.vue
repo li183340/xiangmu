@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed="closed">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="活动名称">
           <el-input v-model="form.title"></el-input>
@@ -131,8 +131,8 @@ export default {
             this.requestlist();
           }
         });
-      }else{
-        warning('请输入内容')
+      } else {
+        warning("请输入内容");
       }
     },
     getone(id) {
@@ -143,7 +143,20 @@ export default {
         this.times.push(new Date(parseInt(this.form.endtime)));
       });
     },
-    edit() {},
+    edit() {
+      this.form.begintime = this.times[0].getTime();
+      this.form.endtime = this.times[1].getTime();
+      httpseckedit(this.form).then(res=>{
+        if(res.data.code==200){
+          success(res.data.msg)
+          this.close()
+          this.requestlist()
+        }else{
+          warning(res.data.msg)
+        }
+      })
+
+    },
     cates(id) {
       this.form.second_cateid = 0;
       this.form.goodsid = 0;
@@ -165,10 +178,10 @@ export default {
         }
       });
     },
-    closed(){
-      this.clear()
-      this.times=[]
-    }
+    closed() {
+      this.clear();
+      this.times = [];
+    },
   },
   mounted() {
     this.catelist();

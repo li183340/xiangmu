@@ -14,5 +14,5 @@ export const stringreg =()=>{
     return /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/
 }
 export const usernamereg=()=>{
-    return /^[a-zA-Z]$/
+    return /^[a-zA-Z]+$/
 }

@@ -88,7 +88,7 @@ export default {
     },
 
     add1() {
-      if (this.form.ctaename) {
+      if (this.form.catename) {
         httpcateadd(this.form).then((res) => {
           this.add.show = false;
           this.requestlist();
@@ -103,15 +103,16 @@ export default {
         this.form = res.data.list;
         this.form.id = id;
         this.imageUrl = this.$img + this.form.img;
+        console.log(this.form)
       });
     },
 
     edit() {
-      httpcateedit(this.from).then((res) => {
+      httpcateedit(this.form).then((res) => {
         if (res.data.code == 200) {
           success(res.data.msg);
           this.clear();
-
+          this.requestlist()
           this.add.show = false;
         } else {
           warning(res.data.msg);
@@ -126,9 +127,9 @@ export default {
     },
 
     regcatename() {
-      if (!stringreg().test(this.form.catename)) {
-        warning("请输入汉字和字母");
-      }
+      // if (!stringreg().test(this.form.catename)) {
+      //   warning("请输入汉字和字母");
+      // }
     },
 
     closed(){

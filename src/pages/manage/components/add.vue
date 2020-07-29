@@ -114,6 +114,7 @@ export default {
         if (res.data.code == 200) {
           success(res.data.msg);
           this.requestuser();
+          this.add.show=false
           this.clear();
         } else {
           warning(res.data.msg);

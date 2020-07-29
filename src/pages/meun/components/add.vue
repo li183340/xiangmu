@@ -135,8 +135,9 @@ export default {
         if (res.data.code == 200) {
           this.requestmeunList();
           success(res.data.msg);
-          this.empty();
           this.add.show = false;
+          this.empty();
+          
         } else {
           warning(res.data.msg);
         }
