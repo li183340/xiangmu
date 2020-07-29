@@ -1,19 +1,23 @@
 <template>
   <div>
-    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed="closed">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="规格名称">
           <el-input v-model="form.specsname"></el-input>
         </el-form-item>
 
         <el-form-item label="规格属性">
-          <el-input v-model="attrs"></el-input>
-          <el-button type="primary" @click="addattrs">新增规格属性</el-button>
+          <div class="box">
+            <el-input v-model="attrs"></el-input>
+            <el-button type="primary" @click="addattrs">新增规格属性</el-button>
+          </div>
         </el-form-item>
 
         <el-form-item label="规格属性" v-for="(item,index) in form.attrs" :key="index">
-          <el-input v-model="form.attrs[index]"></el-input>
-          <el-button type="danger" @click="del(index)">删除</el-button>
+          <div class="box">
+            <el-input v-model="form.attrs[index]"></el-input>
+            <el-button type="danger" @click="del(index)">删除</el-button>
+          </div>
         </el-form-item>
 
         <el-form-item label="状态">
@@ -28,7 +32,7 @@
 
         <el-form-item>
           <el-button type="primary" v-if="add.isAdd" @click="add2">添加</el-button>
-          <el-button type="primary" v-else @click="edit">编辑</el-button>
+          <el-button type="primary" v-else @click="edit">修改</el-button>
           <el-button @click="close">取消</el-button>
         </el-form-item>
       </el-form>
@@ -97,8 +101,8 @@ export default {
             warning(res.data.msg);
           }
         });
-      }else{
-        warning('请输入内容')
+      } else {
+        warning("请输入内容");
       }
     },
     getone(id) {
@@ -110,22 +114,25 @@ export default {
     edit() {
       this.form.attrs = JSON.stringify(this.form.attrs);
       httpspecsedit(this.form).then((res) => {
-        if (res.data.code==200) {
+        if (res.data.code == 200) {
           success(res.data.msg);
           this.add.show = false;
-          this.requestlist()
+          this.requestlist();
           this.clear();
         } else {
           warning(res.data.msg);
         }
       });
     },
-    closed(){
-      this.clear()
-    }
+    closed() {
+      this.clear();
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.box{
+  display: flex;
+}
 </style>

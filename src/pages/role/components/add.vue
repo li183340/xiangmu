@@ -29,7 +29,7 @@
 
         <el-form-item>
           <el-button type="primary" @click="add1" v-if="add.isAdd">添加</el-button>
-          <el-button type="primary" @click="edit" v-else>编辑</el-button>
+          <el-button type="primary" @click="edit" v-else>修改</el-button>
           <el-button @click="close">取消</el-button>
         </el-form-item>
       </el-form>
