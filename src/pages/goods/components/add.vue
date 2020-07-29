@@ -6,7 +6,7 @@
           <el-select v-model="form.first_cateid" placeholder="请选择" @change="cates">
             <el-option label="请选择" :value="0" disabled></el-option>
             <el-option
-              v-for="(item) in cate"
+              v-for="item in cate"
               :key="item.id"
               :label="item.catename"
               :value="item.id"
@@ -15,7 +15,7 @@
         </el-form-item>
         <el-form-item label="二级分类">
           <el-select v-model="form.second_cateid" placeholder="请选择">
-            <el-option label="请选择" :value="0"></el-option>
+            <el-option label="请选择" :value="0" disabled></el-option>
             <el-option
               v-for="item in catechildren"
               :key="item.id"
@@ -150,6 +150,7 @@ export default {
         ishot: 1,
         status: 1,
       };
+      this.imageUrl=''
     },
     add1() {
       this.form.specsattr = JSON.stringify(this.form.specsattr);
@@ -168,6 +169,7 @@ export default {
             this.close();
             this.requestlist();
             this.requesttotal();
+            this.imageUrl=''
           }
         });
       } else {
@@ -199,7 +201,7 @@ export default {
         this.form.id = id;
         this.form.specsattr = JSON.parse(this.form.specsattr);
         this.imageUrl = this.$img + this.form.img;
-        console.log(this.imageUrl);
+        console.log(this.form);
       });
     },
     edit() {

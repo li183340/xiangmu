@@ -74,10 +74,9 @@ export default {
     add1() {
       if (this.form.title && this.form.img) {
         httpbanneradd(this.form).then((res) => {
-          if (res.data.code == 20) {
+          if (res.data.code == 200) {
             success(res.data.msg);
-            this.add.show = false;
-            this.clear();
+            this.close();
             this.requestlist();
           } else {
             warning(res.data.msg);

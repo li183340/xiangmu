@@ -120,9 +120,10 @@ export default {
       };
     },
     add1() {
+      this.form.begintime = this.times[0].getTime();
+      this.form.endtime = this.times[1].getTime();
+
       if (this.form.title && this.form.begintime && this.form.endtime) {
-        this.form.begintime = this.times[0].getTime();
-        this.form.endtime = this.times[1].getTime();
         httpseckadd(this.form).then((res) => {
           if (res.data.code == 200) {
             success(res.data.msg);
@@ -146,16 +147,15 @@ export default {
     edit() {
       this.form.begintime = this.times[0].getTime();
       this.form.endtime = this.times[1].getTime();
-      httpseckedit(this.form).then(res=>{
-        if(res.data.code==200){
-          success(res.data.msg)
-          this.close()
-          this.requestlist()
-        }else{
-          warning(res.data.msg)
+      httpseckedit(this.form).then((res) => {
+        if (res.data.code == 200) {
+          success(res.data.msg);
+          this.close();
+          this.requestlist();
+        } else {
+          warning(res.data.msg);
         }
-      })
-
+      });
     },
     cates(id) {
       this.form.second_cateid = 0;

@@ -68,7 +68,7 @@ export default {
     clear() {
       this.form = {
         specsname: "",
-        attrs: '',
+        attrs: [],
         status: 1,
       };
     },
