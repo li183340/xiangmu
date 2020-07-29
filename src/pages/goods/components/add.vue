@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <el-dialog :title="add.title" :visible.sync="add.show" @opened="wangeditor">
+    <el-dialog :title="add.title" :visible.sync="add.show" @opened="wangeditor" @closed='closed'>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="一级分类">
           <el-select v-model="form.first_cateid" placeholder="请选择" @change="cates">
@@ -230,6 +230,9 @@ export default {
      if(!numberreg().test(this.form.market_price)){
           warning('请输入数字')
       }
+    },
+    closed(){
+      this.clear()
     }
   },
   computed: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog :title="add.title" :visible.sync="add.show">
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="所属角色">
           <el-select v-model="form.roleid" placeholder>
@@ -133,6 +133,9 @@ export default {
         warning("请输入6-12位的数字和字母的密码");
       }
     },
+    closed(){
+      this.clear()
+    }
   },
   mounted() {
     this.reqrolelist();

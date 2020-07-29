@@ -26,6 +26,8 @@ export default {
   methods:{
     add1(){
         this.add.show=true
+        this.add.title='商品规格添加',
+         this.add.isAdd=true
 
     },
     edit(id){

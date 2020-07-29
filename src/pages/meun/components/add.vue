@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog :title="add.title" :visible.sync="add.show">
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="菜单名称">
           <el-input v-model="form.title" :value="form.title" @blur="regtitle"></el-input>
@@ -147,6 +147,9 @@ export default {
         warning("请输入正确的菜单名称，不能包含数字");
       }
     },
+    closed(){
+      this.empty()
+    }
   },
   computed: {
     ...mapGetters({

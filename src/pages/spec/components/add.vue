@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog :title="add.title" :visible.sync="add.show">
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="规格名称">
           <el-input v-model="form.specsname"></el-input>
@@ -66,9 +66,9 @@ export default {
       this.clear();
     },
     clear() {
-      this.from = {
+      this.form = {
         specsname: "",
-        attrs: "",
+        attrs: [],
         status: 1,
       };
     },
@@ -119,6 +119,9 @@ export default {
         }
       });
     },
+    closed(){
+      this.clear()
+    }
   },
 };
 </script>

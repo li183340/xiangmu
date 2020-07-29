@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <el-dialog :title="add.title" :visible.sync="add.show">
+    <el-dialog :title="add.title" :visible.sync="add.show" @closed='closed'>
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="上级分类">
           <el-select v-model="form.pid" placeholder="请选择">
@@ -130,6 +130,10 @@ export default {
         warning("请输入汉字和字母");
       }
     },
+
+    closed(){
+      this.clear()
+    }
   },
 
   computed: {
