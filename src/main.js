@@ -15,7 +15,8 @@ import './assets/css/reset.css'
 import store from './store'
 
 
-Vue.prototype.$img = 'http://localhost:3000'
+// Vue.prototype.$img = 'http://localhost:3000'
+Vue.prototype.$img = ''
 //公共组件
 import commonComponents from './components'
 for(var i in commonComponents){
@@ -30,19 +31,7 @@ for(var i in filters){
 }
 
 
-//全局守卫
-router.beforeEach((to,from,next)=>{
-      if(to.path=='/login'){
-        next()
-        return
-      }
-      var isLogin = localStorage.getItem('adm')
-      if(isLogin){
-        next()
-        return
-      }
-      next('/login')
-})
+
 
 
 /* eslint-disable no-new */

@@ -64,6 +64,7 @@ export default {
     esc() {
       this.changeuser(null);
       this.$router.push("/login");
+      sessionStorage.removeItem('user')
     },
   },
   mounted() {},

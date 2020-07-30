@@ -4,8 +4,8 @@ import router from '../router'
 import {warning} from '../util/alert'
 
 
-const head = '/api'
-// const head = ''
+// const head = '/api'
+const head = ''
 
 
 //请求拦截
@@ -19,8 +19,8 @@ axios.interceptors.request.use(req=>{
 
 //响应拦截
 axios.interceptors.response.use(res=>{
-    console.log(res.config.url)
-    console.log(res)
+    // console.log(res.config.url)
+    // console.log(res)
     if(res.data.msg =='登录已过期或访问权限受限'){
         warning('请重新登陆')
         router.push('/login')
